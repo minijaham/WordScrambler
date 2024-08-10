@@ -1,0 +1,41 @@
+---
+# Term between each word scramble quizzes. This value is in ticks. (20 ticks = 1 second)
+interval: 1200 # 1 minute
+
+# Economy settings
+economy:
+  # Edit this field to the corresponding economy plugin you have.
+  # Options: EconomyAPI (or EconomyS), BedrockEconomy, Capital (deprecated, no longer supported).
+  provider: "BedrockEconomy"
+  # Minimum amount of money to give to the winning player
+  min-amount: 100
+  # Maximum amount of money to give to the winning player
+  max-amount: 1000
+  # Extra configuration if you chose Capital as your provider.
+  capital:
+    # Monetary unit
+    unit: "$"
+    selector: []
+
+# If you want the player to match the word exactly, meaning they will need to write the exact capitalization.
+match-exact: false
+
+# Number of minimum players that has to be online in order for the game to work.
+player-count: 5
+
+# Message formats
+format:
+  # Available tags: {word}, {money}
+  game-message: "&l&e First player to unscramble &r&7{word}&l&e will receive &r&a{money}&l&e!"
+  # Available tags: {word}, {player}
+  win-message: "&7 Player {player} has unscrambled the word: &e{word}."
+
+
+# List of words you want on the quiz. It will be randomly chosen from this list.
+words:
+  - "Minecraft"
+  - "PocketMine"
+  - "minijaham"
+  - "gangsterishinistism"
+  # and so on
+...

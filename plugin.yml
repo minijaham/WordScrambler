@@ -1,0 +1,9 @@
+---
+name: WordScrambler
+version: 0.0.1
+main: minijaham\WordScrambler\WordScrambler
+api: 5.17.0
+src-namespace-prefix: minijaham\WordScrambler
+
+softdepend: [EconomyAPI, BedrockEconomy]
+...
