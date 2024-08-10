@@ -13,20 +13,20 @@ use InvalidArgumentException;
 
 final class BedrockEconomyProvider implements EconomyProvider
 {
-    private BedrockEconomy $plugin;
+	private BedrockEconomy $plugin;
 
 	public function __construct() {
-        $plugin = Server::getInstance()->getPluginManager()->getPlugin("BedrockEconomy") ?? throw new InvalidArgumentException("BedrockEconomy plugin was not found");
-        $this->plugin = $plugin;
+		$plugin = Server::getInstance()->getPluginManager()->getPlugin("BedrockEconomy") ?? throw new InvalidArgumentException("BedrockEconomy plugin was not found");
+		$this->plugin = $plugin;
 	}
 
-    public function addMoney(Player $player, float $money) : void
-    {
+	public function addMoney(Player $player, float $money) : void
+	{
 		BedrockEconomyAPI::getInstance()->addToPlayerBalance($player->getName(), (int) ceil($money));
 	}
 
 	public function formatMoney(float $money) : string
-    {
+	{
 		return $this->plugin->getCurrencyManager()->getSymbol() . number_format($money);
 	}
 }
