@@ -26,25 +26,25 @@ final class WordScrambler extends PluginBase implements Listener
 
     private array $words = [];
     private ?string $currentWord = null;
-    private ?int $currentReward = null;
+    private ?int $currentReward  = null;
     private ?EconomyProvider $economyProvider = null;
 
-    private const CONFIG_WORDS = 'words';
-    private const CONFIG_INTERVAL = 'interval';
-    private const CONFIG_PLAYER_COUNT = 'player-count';
-    private const CONFIG_MATCH_EXACT = 'match-exact';
-    private const CONFIG_GAME_MESSAGE = 'format.game-message';
-    private const CONFIG_WIN_MESSAGE = 'format.win-message';
+    private const CONFIG_WORDS            = 'words';
+    private const CONFIG_INTERVAL         = 'interval';
+    private const CONFIG_PLAYER_COUNT     = 'player-count';
+    private const CONFIG_MATCH_EXACT      = 'match-exact';
+    private const CONFIG_GAME_MESSAGE     = 'format.game-message';
+    private const CONFIG_WIN_MESSAGE      = 'format.win-message';
     private const CONFIG_ECONOMY_PROVIDER = 'economy.provider';
-    private const CONFIG_MIN_AMOUNT = 'economy.min-amount';
-    private const CONFIG_MAX_AMOUNT = 'economy.max-amount';
+    private const CONFIG_MIN_AMOUNT       = 'economy.min-amount';
+    private const CONFIG_MAX_AMOUNT       = 'economy.max-amount';
 
     /**
      * Loader Function
      *
      * @return void
      */
-    protected function onLoad(): void
+    protected function onLoad() : void
     {
         self::setInstance($this);
         $this->saveDefaultConfig();
@@ -55,7 +55,7 @@ final class WordScrambler extends PluginBase implements Listener
      *
      * @return void
      */
-    protected function onEnable(): void
+    protected function onEnable() : void
     {
         $config = $this->getConfig();
 
@@ -78,7 +78,7 @@ final class WordScrambler extends PluginBase implements Listener
      * @param PlayerChatEvent $event
      * @return void
      */
-    public function onChat(PlayerChatEvent $event): void
+    public function onChat(PlayerChatEvent $event) : void
     {
         if ($this->currentWord === null) {
             return;
@@ -101,7 +101,7 @@ final class WordScrambler extends PluginBase implements Listener
      *
      * @return void
      */
-    public function setRandomWord(): void
+    public function setRandomWord() : void
     {
         $server = $this->getServer();
         $config = $this->getConfig();
@@ -129,7 +129,7 @@ final class WordScrambler extends PluginBase implements Listener
      * @param Player $player
      * @return void
      */
-    public function reward(Player $player): void
+    public function reward(Player $player) : void
     {
         $this->getEconomyProvider()->addMoney($player, $this->currentReward);
 
@@ -148,7 +148,7 @@ final class WordScrambler extends PluginBase implements Listener
      *
      * @return EconomyProvider|null
      */
-    public function getEconomyProvider(): ?EconomyProvider
+    public function getEconomyProvider() : ?EconomyProvider
     {
         return $this->economyProvider;
     }
@@ -160,7 +160,7 @@ final class WordScrambler extends PluginBase implements Listener
      * @throws InvalidArgumentException
      * @return void
      */
-    private function setEconomyProvider(?EconomyProvider $economyProvider): void
+    private function setEconomyProvider(?EconomyProvider $economyProvider) : void
     {
         if ($economyProvider === null) {
             throw new InvalidArgumentException('Invalid economy provider specified. Please check the config.');
@@ -175,7 +175,7 @@ final class WordScrambler extends PluginBase implements Listener
      * @param string|null $providerName
      * @return EconomyProvider|null
      */
-    private function initializeEconomyProvider(?string $providerName): ?EconomyProvider
+    private function initializeEconomyProvider(?string $providerName) : ?EconomyProvider
     {
         return match (strtolower($providerName ?? '')) {
             'economyapi', 'economys' => new EconomyAPIProvider(),
