@@ -8,9 +8,9 @@ economy:
   # Options: EconomyAPI (or EconomyS), BedrockEconomy, Capital (deprecated, no longer supported).
   provider: "BedrockEconomy"
   # Minimum amount of money to give to the winning player
-  min-amount: 100
+  min-amount: 2000
   # Maximum amount of money to give to the winning player
-  max-amount: 1000
+  max-amount: 30000
   # Extra configuration if you chose Capital as your provider.
   capital:
     # Monetary unit
@@ -21,7 +21,7 @@ economy:
 match-exact: false
 
 # Number of minimum players that has to be online in order for the game to work.
-player-count: 5
+player-count: 0
 
 # Message formats
 format:

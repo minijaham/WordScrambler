@@ -27,6 +27,6 @@ final class BedrockEconomyProvider implements EconomyProvider
 
 	public function formatMoney(float $money) : string
 	{
-		return $this->plugin->getCurrencyManager()->getSymbol() . number_format($money);
+		return $this->plugin->getCurrency()->formatter->format((int) ceil($money), 0);
 	}
 }
