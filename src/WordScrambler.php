@@ -85,10 +85,10 @@ final class WordScrambler extends PluginBase implements Listener
         }
 
         $message = $event->getMessage();
-        $config = $this->getConfig();
+        $config  = $this->getConfig();
 
         $guess = $config->get(self::CONFIG_MATCH_EXACT) ? $message : strtolower($message);
-        $word = $config->get(self::CONFIG_MATCH_EXACT) ? $this->currentWord : strtolower($this->currentWord);
+        $word  = $config->get(self::CONFIG_MATCH_EXACT) ? $this->currentWord : strtolower($this->currentWord);
 
         if ($guess === $word) {
             $this->reward($event->getPlayer());
